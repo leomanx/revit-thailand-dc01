@@ -79,8 +79,8 @@
     },
     {
       "path": "datacenter.html",
-      "bytes": 4294,
-      "sha256": "fd598e29da00a653bd5491d7b6b9c7ce3a079895bac7b432fd8ffcc6d7093448"
+      "bytes": 5442,
+      "sha256": "f612165b6b933ac049a8e349e4c4ad86fbe6f4b0bae662b85889e2de98291cc4"
     },
     {
       "path": "dc-architecture.js",
@@ -119,8 +119,8 @@
     },
     {
       "path": "dc.css",
-      "bytes": 40456,
-      "sha256": "b8b0543305dced25d5577d9883ed3a6a7de52d261f1fb6a39c8d0cf428b564af"
+      "bytes": 41943,
+      "sha256": "1b580a8d9a23b0a1cfcdb8b55290a6753ba508bea8978d52257403c08e912d76"
     },
     {
       "path": "docs/ARCHITECTURE_LAB.md",
@@ -204,8 +204,8 @@
     },
     {
       "path": "landing.html",
-      "bytes": 13158,
-      "sha256": "53149099b87e18c3d508b7ba674f1cd83a645984802c788b405ce772fb0ea453"
+      "bytes": 13214,
+      "sha256": "ff2f65db6ef25ad0d8e9e3131363c1d03b23410c4a71e79cd589b46212ed8c10"
     },
     {
       "path": "netlify.toml",
@@ -269,13 +269,13 @@
     },
     {
       "path": "showcase.css",
-      "bytes": 8476,
-      "sha256": "fd4b324a6d94abdfdd5ddad0f66e88c0142e57263d1a1ecc42ee709c17b89ecb"
+      "bytes": 9556,
+      "sha256": "a068688b79b1eb6abb293993e35a7e5605df319bc67bde6c5e44f4e9716e68c2"
     },
     {
       "path": "showcase.js",
-      "bytes": 1519,
-      "sha256": "a58380a0088e5046da0b39dc0392667f3e557de4e02ce92c4f90b0dcc4dd04c3"
+      "bytes": 5218,
+      "sha256": "3858f977bfe3dcb03b650517901f8de2c1b60714bd0673a7931869f0b2a63566"
     },
     {
       "path": "START-DC01.cmd",
