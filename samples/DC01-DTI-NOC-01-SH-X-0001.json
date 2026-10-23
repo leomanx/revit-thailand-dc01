@@ -1,0 +1,272 @@
+{
+  "schema": "DC01-asset-point-map-v1",
+  "notice": "Fictional read-only mapping, no live endpoint or credentials. Proxy model GUIDs refer only to the included IFC example.",
+  "modelFile": "DC01-IMT-SITE-ZZ-M3-X-0001.ifc",
+  "modelRevision": "R02",
+  "mappings": [
+    {
+      "assetId": "UPS-A-01",
+      "ifcGuid": "0DoW00000000000000001a",
+      "cmmsKey": "DC01/AS001",
+      "zone": "E01",
+      "system": "UPS-A",
+      "point": "EPMS.UPS_A_01.ActivePower",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "UPS-B-01",
+      "ifcGuid": "0DoW00000000000000001b",
+      "cmmsKey": "DC01/AS002",
+      "zone": "E02",
+      "system": "UPS-B",
+      "point": "EPMS.UPS_B_01.ActivePower",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "UPS-A-02",
+      "ifcGuid": "0DoW00000000000000001c",
+      "cmmsKey": "DC01/AS003",
+      "zone": "E01",
+      "system": "UPS-A",
+      "point": "EPMS.UPS_A_02.ActivePower",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "UPS-B-02",
+      "ifcGuid": "0DoW00000000000000001d",
+      "cmmsKey": "DC01/AS004",
+      "zone": "E02",
+      "system": "UPS-B",
+      "point": "EPMS.UPS_B_02.ActivePower",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "MSB-A-01",
+      "ifcGuid": "0DoW00000000000000001e",
+      "cmmsKey": "DC01/AS005",
+      "zone": "E01",
+      "system": "ELE-A",
+      "point": "EPMS.MSB_A_01.DemoValue",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "MSB-B-01",
+      "ifcGuid": "0DoW00000000000000001f",
+      "cmmsKey": "DC01/AS006",
+      "zone": "E02",
+      "system": "ELE-B",
+      "point": "EPMS.MSB_B_01.DemoValue",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "GEN-01",
+      "ifcGuid": "0DoW00000000000000001g",
+      "cmmsKey": "DC01/AS007",
+      "zone": "GEN",
+      "system": "GEN-SYS",
+      "point": "EPMS.GEN_01.DemoValue",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "GEN-02",
+      "ifcGuid": "0DoW00000000000000001h",
+      "cmmsKey": "DC01/AS008",
+      "zone": "GEN",
+      "system": "GEN-SYS",
+      "point": "EPMS.GEN_02.DemoValue",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "GEN-03",
+      "ifcGuid": "0DoW00000000000000001i",
+      "cmmsKey": "DC01/AS009",
+      "zone": "GEN",
+      "system": "GEN-SYS",
+      "point": "EPMS.GEN_03.DemoValue",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "GEN-04",
+      "ifcGuid": "0DoW00000000000000001j",
+      "cmmsKey": "DC01/AS010",
+      "zone": "GEN",
+      "system": "GEN-SYS",
+      "point": "EPMS.GEN_04.DemoValue",
+      "unit": "kW",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CH-01",
+      "ifcGuid": "0DoW00000000000000001k",
+      "cmmsKey": "DC01/AS011",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.CH_01.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CH-02",
+      "ifcGuid": "0DoW00000000000000001l",
+      "cmmsKey": "DC01/AS012",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.CH_02.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CH-03",
+      "ifcGuid": "0DoW00000000000000001m",
+      "cmmsKey": "DC01/AS013",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.CH_03.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CH-04",
+      "ifcGuid": "0DoW00000000000000001n",
+      "cmmsKey": "DC01/AS014",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.CH_04.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CH-05",
+      "ifcGuid": "0DoW00000000000000001o",
+      "cmmsKey": "DC01/AS015",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.CH_05.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CH-06",
+      "ifcGuid": "0DoW00000000000000001p",
+      "cmmsKey": "DC01/AS016",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.CH_06.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CRAH-DH1-01",
+      "ifcGuid": "0DoW00000000000000001q",
+      "cmmsKey": "DC01/AS017",
+      "zone": "DH1",
+      "system": "COOL-DH1",
+      "point": "BMS.CRAH_DH1_01.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CRAH-DH1-02",
+      "ifcGuid": "0DoW00000000000000001r",
+      "cmmsKey": "DC01/AS018",
+      "zone": "DH1",
+      "system": "COOL-DH1",
+      "point": "BMS.CRAH_DH1_02.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CRAH-DH1-03",
+      "ifcGuid": "0DoW00000000000000001s",
+      "cmmsKey": "DC01/AS019",
+      "zone": "DH1",
+      "system": "COOL-DH1",
+      "point": "BMS.CRAH_DH1_03.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "CRAH-DH1-04",
+      "ifcGuid": "0DoW00000000000000001t",
+      "cmmsKey": "DC01/AS020",
+      "zone": "DH1",
+      "system": "COOL-DH1",
+      "point": "BMS.CRAH_DH1_04.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "PMP-CHW-01",
+      "ifcGuid": "0DoW00000000000000001u",
+      "cmmsKey": "DC01/AS021",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.PMP_CHW_01.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "PMP-CHW-02",
+      "ifcGuid": "0DoW00000000000000001v",
+      "cmmsKey": "DC01/AS022",
+      "zone": "CHY",
+      "system": "CHW-SYS",
+      "point": "BMS.PMP_CHW_02.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "RACK-DH1-001",
+      "ifcGuid": "0DoW00000000000000001w",
+      "cmmsKey": "DC01/AS023",
+      "zone": "DH1",
+      "system": "ICT-DH1",
+      "point": "BMS.RACK_DH1_001.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    },
+    {
+      "assetId": "RACK-DH2-001",
+      "ifcGuid": "0DoW00000000000000001x",
+      "cmmsKey": "DC01/AS024",
+      "zone": "DH2",
+      "system": "ICT-DH2",
+      "point": "BMS.RACK_DH2_001.DemoValue",
+      "unit": "project-defined; verify point semantics",
+      "sourceOwner": "BMS",
+      "informationOwner": "OPS"
+    }
+  ]
+}

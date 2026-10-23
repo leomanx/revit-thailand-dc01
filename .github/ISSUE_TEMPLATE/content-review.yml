@@ -1,0 +1,25 @@
+name: ข้อคลาดเคลื่อนของเนื้อหา / Content review
+description: ช่วยทบทวนสมมติฐานหรือคำอธิบายทาง BIM, AEC และการเดินระบบ
+body:
+  - type: input
+    id: context
+    attributes:
+      label: รุ่น / หน้า / Asset, Zone, File หรือ Assembly ID
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: ข้อความหรือพฤติกรรมที่พบ และสิ่งที่เสนอให้แก้
+    validations:
+      required: true
+  - type: textarea
+    id: basis
+    attributes:
+      label: เหตุผลและแหล่งอ้างอิง ถ้ามี
+      description: ระบุ edition / clause / ขอบเขตที่ใช้ได้ ไม่แนบเอกสารลิขสิทธิ์เต็มฉบับหรือข้อมูลโครงการจริง
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: ขั้นตอน / อุปกรณ์ / ภาพประกอบ ถ้ามี
+      description: ลบชื่อบุคคล ข้อมูลลูกค้า credential และข้อความส่วนตัวก่อนส่ง

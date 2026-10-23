@@ -1,0 +1,467 @@
+{
+  "title": "Revit Thailand | ACC CDE Explorer",
+  "version": "1.1.0",
+  "disclaimer": "Educational ISO 19650-aligned proposal; not an ISO-prescribed folder tree, ACC import template, or proof of compliance.",
+  "states": [
+    "WIP",
+    "SHARED",
+    "PUBLISHED",
+    "ARCHIVED"
+  ],
+  "roles": [
+    "Owner / Appointing Party",
+    "Project Manager",
+    "Lead Appointed Party",
+    "Information Manager",
+    "BIM Manager / BIM Coordinator",
+    "Architect / Discipline Lead",
+    "Engineer / Discipline Lead",
+    "Main Contractor",
+    "Subcontractor / Specialist",
+    "Document Controller",
+    "CDE / ACC Administrator",
+    "Facility Manager / Operator"
+  ],
+  "disciplines": [
+    "GEN",
+    "ARC",
+    "STR",
+    "CIV",
+    "LAN",
+    "INT",
+    "MEP",
+    "MEC",
+    "ELE",
+    "PLB",
+    "FIR",
+    "ICT",
+    "SEC",
+    "BMS",
+    "GEO",
+    "SUR",
+    "ENV",
+    "CON",
+    "COM",
+    "OPR"
+  ],
+  "folders": [
+    {
+      "id": "00",
+      "name": "00_PROJECT_INFORMATION",
+      "state": "GOVERNANCE",
+      "children": [
+        "01_Project_Governance",
+        "02_Information_Requirements",
+        "03_Information_Management",
+        "04_Standards_and_Templates",
+        "05_Registers_and_Transmittals",
+        "06_Project_Administration"
+      ]
+    },
+    {
+      "id": "01",
+      "name": "01_WIP",
+      "state": "WIP",
+      "children": [
+        "[Originator_Organization]/01_Models",
+        "[Originator_Organization]/02_Drawings",
+        "[Originator_Organization]/03_Documents",
+        "[Originator_Organization]/04_Calculations",
+        "[Originator_Organization]/05_Supporting_Information"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "02_SHARED",
+      "state": "SHARED",
+      "children": [
+        "01_Models/[Discipline]",
+        "02_Drawings/[Discipline]",
+        "03_Documents/[Discipline]",
+        "04_Coordination",
+        "05_Review_and_Comment",
+        "06_Reference_Information"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "03_PUBLISHED",
+      "state": "PUBLISHED",
+      "children": [
+        "01_Design_Deliverables/01_Models",
+        "01_Design_Deliverables/02_Drawings",
+        "01_Design_Deliverables/03_Specifications",
+        "01_Design_Deliverables/04_Reports_and_Calculations",
+        "02_Construction_Deliverables",
+        "03_Contractual_Deliverables",
+        "04_Asset_and_Handover_Information"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "04_ARCHIVED",
+      "state": "ARCHIVED",
+      "children": [
+        "01_Superseded_Information",
+        "02_Historical_Snapshots",
+        "03_Transmittal_Records",
+        "04_Project_Closeout"
+      ]
+    },
+    {
+      "id": "05",
+      "name": "05_PROJECT_MANAGEMENT",
+      "state": "PROCESS",
+      "children": [
+        "01_Programme_and_Schedule",
+        "02_Meetings_and_Actions",
+        "03_Risks_and_Changes",
+        "04_Progress_and_Reporting",
+        "05_Commercial_and_Contracts"
+      ]
+    },
+    {
+      "id": "06",
+      "name": "06_SITE_AND_CONSTRUCTION",
+      "state": "PROCESS",
+      "children": [
+        "01_Site_Management",
+        "02_Method_Statements_and_ITPs",
+        "03_RFIs_and_Technical_Queries",
+        "04_Submittals_and_Shop_Drawings",
+        "05_Inspection_and_Testing",
+        "06_NCR_and_Quality_Records",
+        "07_Commissioning",
+        "08_As_Built_and_Handover"
+      ]
+    }
+  ],
+  "naming": {
+    "fields": [
+      "Project",
+      "Originator",
+      "Volume/System",
+      "Level/Location",
+      "Type",
+      "Role",
+      "Number"
+    ],
+    "relatedAttributes": [
+      "Status",
+      "Revision",
+      "Classification"
+    ],
+    "example": "PRJ-ARC-ZZ-01-DR-A-0001.pdf"
+  },
+  "workflow": [
+    {
+      "from": "WIP",
+      "to": "SHARED",
+      "gate": "Internal check + authorization",
+      "actor": "Originator lead"
+    },
+    {
+      "from": "SHARED",
+      "to": "PUBLISHED",
+      "gate": "Review + acceptance/authorization for specified use",
+      "actor": "Authorized approver"
+    },
+    {
+      "from": "PUBLISHED",
+      "to": "ARCHIVED",
+      "gate": "Retention / supersession event",
+      "actor": "Document control"
+    }
+  ],
+  "permissionGuidance": {
+    "WIP": "Private to originator team; narrowly scoped administration",
+    "SHARED": "Read for authorized recipients; publishing/upload rights limited",
+    "PUBLISHED": "Read for intended recipients; publishing rights restricted",
+    "ARCHIVED": "Read-only retention and restricted record administration",
+    "GOVERNANCE": "Broad read for non-confidential standards; controlled edit",
+    "PROCESS": "Subfolders restricted per scope; commercial content confidential"
+  },
+  "sources": [
+    "https://help.autodesk.com/cloudhelp/ENU/Docs-Files/files/files-naming-standard/Set_Up_Naming_Standard.html",
+    "https://help.autodesk.com/cloudhelp/ENU/BIM360-GOV-Document-Management/files/common-data-environment/Set_Up_Common_Data_Environment.html"
+  ],
+  "roleDefinitions": [
+    {
+      "id": "01",
+      "name": "Owner / Appointing Party",
+      "responsibility": "Defines information requirements, acceptance authority and project governance.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "02",
+      "name": "Project Manager",
+      "responsibility": "Coordinates deliverables, milestones and decision escalations.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "03",
+      "name": "Lead Appointed Party",
+      "responsibility": "Coordinates delivery team and information delivery plan.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "04",
+      "name": "Information Manager",
+      "responsibility": "Coordinates information management procedures, codes and exchange controls; authority is appointment-defined.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "05",
+      "name": "BIM Manager / BIM Coordinator",
+      "responsibility": "Leads BIM execution, federation, clashes and model quality.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "06",
+      "name": "Architect / Discipline Lead",
+      "responsibility": "Authors/checks/authorizes architectural information within appointed scope.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "07",
+      "name": "Engineer / Discipline Lead",
+      "responsibility": "Authors/checks/authorizes engineering information within appointed scope.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "08",
+      "name": "Main Contractor",
+      "responsibility": "Coordinates construction submissions, methods and site records.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "09",
+      "name": "Subcontractor / Specialist",
+      "responsibility": "Produces package-specific information and submits via agreed gate.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "10",
+      "name": "Document Controller",
+      "responsibility": "Maintains controlled issue, transmittal, revision and audit record.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "11",
+      "name": "CDE / ACC Administrator",
+      "responsibility": "Configures platform, groups and technical permissions; no automatic approval mandate.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    },
+    {
+      "id": "12",
+      "name": "Facility Manager / Operator",
+      "responsibility": "Defines/validates operational data needs and handover information.",
+      "note": "Illustrative assignment; confirm in appointments, EIR/BEP and project responsibility matrix."
+    }
+  ],
+  "responsibilityMatrix": {
+    "legend": {
+      "R": "Responsible (does work)",
+      "A": "Accountable (owns decision; one per activity)",
+      "C": "Consulted",
+      "I": "Informed",
+      "-": "Not routinely assigned"
+    },
+    "roles": [
+      "Owner / Appointing Party",
+      "Project Manager",
+      "Lead Appointed Party",
+      "Information Manager",
+      "BIM Manager / BIM Coordinator",
+      "Architect / Discipline Lead",
+      "Engineer / Discipline Lead",
+      "Main Contractor",
+      "Subcontractor / Specialist",
+      "Document Controller",
+      "CDE / ACC Administrator",
+      "Facility Manager / Operator"
+    ],
+    "activities": [
+      {
+        "id": "REQ",
+        "name": "Define information requirements",
+        "raci": [
+          "A",
+          "I",
+          "C",
+          "C",
+          "C",
+          "I",
+          "I",
+          "I",
+          "I",
+          "C",
+          "I",
+          "C"
+        ]
+      },
+      {
+        "id": "BEP",
+        "name": "Prepare / coordinate BEP and delivery plan",
+        "raci": [
+          "C",
+          "C",
+          "A",
+          "R",
+          "R",
+          "C",
+          "C",
+          "C",
+          "C",
+          "C",
+          "I",
+          "I"
+        ]
+      },
+      {
+        "id": "WIP",
+        "name": "Author discipline information (architecture example)",
+        "raci": [
+          "I",
+          "I",
+          "C",
+          "C",
+          "C",
+          "A",
+          "C",
+          "I",
+          "I",
+          "I",
+          "I",
+          "I"
+        ]
+      },
+      {
+        "id": "CHECK",
+        "name": "Check discipline model/drawing (architecture example)",
+        "raci": [
+          "I",
+          "I",
+          "C",
+          "C",
+          "R",
+          "A",
+          "C",
+          "I",
+          "I",
+          "I",
+          "I",
+          "I"
+        ]
+      },
+      {
+        "id": "SHARE",
+        "name": "Authorize WIP for Shared coordination",
+        "raci": [
+          "I",
+          "I",
+          "C",
+          "C",
+          "R",
+          "A",
+          "C",
+          "I",
+          "I",
+          "R",
+          "I",
+          "I"
+        ]
+      },
+      {
+        "id": "FED",
+        "name": "Federated coordination / clash review",
+        "raci": [
+          "I",
+          "C",
+          "A",
+          "C",
+          "R",
+          "R",
+          "R",
+          "C",
+          "C",
+          "I",
+          "I",
+          "I"
+        ]
+      },
+      {
+        "id": "ISSUE",
+        "name": "Authorize Published issue for defined use",
+        "raci": [
+          "A",
+          "C",
+          "R",
+          "C",
+          "C",
+          "R",
+          "R",
+          "C",
+          "C",
+          "R",
+          "I",
+          "C"
+        ]
+      },
+      {
+        "id": "TRN",
+        "name": "Control transmittal and revision registers",
+        "raci": [
+          "I",
+          "I",
+          "C",
+          "C",
+          "I",
+          "C",
+          "C",
+          "C",
+          "C",
+          "A",
+          "I",
+          "I"
+        ]
+      },
+      {
+        "id": "PERM",
+        "name": "Configure technical ACC folder permissions",
+        "raci": [
+          "C",
+          "I",
+          "A",
+          "R",
+          "C",
+          "I",
+          "I",
+          "I",
+          "I",
+          "C",
+          "R",
+          "I"
+        ]
+      },
+      {
+        "id": "HAND",
+        "name": "Review and accept asset handover information",
+        "raci": [
+          "A",
+          "C",
+          "R",
+          "C",
+          "C",
+          "C",
+          "C",
+          "R",
+          "R",
+          "R",
+          "I",
+          "C"
+        ]
+      }
+    ]
+  }
+}

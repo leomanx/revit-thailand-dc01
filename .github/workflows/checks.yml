@@ -1,0 +1,26 @@
+name: Check educational public beta
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Tests
+        run: node --test tests/*.test.cjs
+      - name: Offline publisher safety checks
+        run: python tests/publish-github.test.py
+      - name: Build
+        run: node tools/build-static.cjs
+      - name: Audit public payload
+        run: node tools/audit-public.cjs

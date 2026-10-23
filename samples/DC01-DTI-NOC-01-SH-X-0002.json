@@ -1,0 +1,58 @@
+{
+  "schema": "DC01-synthetic-telemetry-v1",
+  "asOf": "2026-10-21T09:00:00+07:00",
+  "freshnessLimitSeconds": 120,
+  "notice": "All readings synthetic. Normal quality does not prove engineering operating limits.",
+  "cases": [
+    {
+      "id": "normal",
+      "name": "ปกติ / valid sample",
+      "asset": "UPS-A-01",
+      "sourceAsset": "UPS-A-01",
+      "value": 325,
+      "unit": "kW",
+      "quality": "GOOD",
+      "ageSeconds": 20
+    },
+    {
+      "id": "misbound",
+      "name": "ชื่อถูก แต่ source ผิดเครื่อง",
+      "asset": "UPS-A-01",
+      "sourceAsset": "UPS-B-01",
+      "value": 325,
+      "unit": "kW",
+      "quality": "GOOD",
+      "ageSeconds": 20
+    },
+    {
+      "id": "stale",
+      "name": "ค่าค้าง 30 นาที",
+      "asset": "UPS-A-01",
+      "sourceAsset": "UPS-A-01",
+      "value": 325,
+      "unit": "kW",
+      "quality": "GOOD",
+      "ageSeconds": 1800
+    },
+    {
+      "id": "badunit",
+      "name": "หน่วยผิด / W แทน kW",
+      "asset": "UPS-A-01",
+      "sourceAsset": "UPS-A-01",
+      "value": 325,
+      "unit": "W",
+      "quality": "GOOD",
+      "ageSeconds": 20
+    },
+    {
+      "id": "quality",
+      "name": "Quality ไม่ผ่าน",
+      "asset": "UPS-A-01",
+      "sourceAsset": "UPS-A-01",
+      "value": 325,
+      "unit": "kW",
+      "quality": "BAD",
+      "ageSeconds": 20
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+name: ปัญหาการใช้งาน / Bug
+description: แจ้งหน้าตา การกด การบันทึก หรือการทำงานที่ผิดปกติ
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: รุ่น / หน้า / browser / อุปกรณ์
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: ขั้นตอนที่ทำให้พบปัญหา
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: สิ่งที่เห็น / สิ่งที่คาดว่าจะเห็น
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: ภาพหรือข้อมูลเพิ่มเติม ถ้ามี
+      description: ไม่ใส่ข้อมูลส่วนบุคคล เอกสารโครงการจริง token หรือ session ที่ยังไม่ได้ตรวจข้อความส่วนตัว

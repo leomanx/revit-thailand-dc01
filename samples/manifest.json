@@ -1,0 +1,41 @@
+{
+  "project": "DC01",
+  "scope": "fictional learning exchanges",
+  "files": [
+    {
+      "registerId": "F0236",
+      "filename": "DC01-IMT-SITE-ZZ-M3-X-0001.ifc",
+      "bytes": 29002,
+      "sha256": "645245cb62c4308fa5087caade904a560fd3002ff4ec9e24f0b762082de635f7",
+      "revision": "R02"
+    },
+    {
+      "registerId": "F0143",
+      "filename": "DC01-IMT-DH1-00-IS-X-0001.bcfzip",
+      "bytes": 39840,
+      "sha256": "8efbd042ef58520016e59b71020a2a3038bb230451e6a652d63778e5ad409bfb",
+      "revision": "R02"
+    },
+    {
+      "registerId": "F0224",
+      "filename": "DC01-DTI-NOC-01-SH-X-0001.json",
+      "bytes": 7908,
+      "sha256": "99aea55cf6fa7d1280ad340a4c9ebc3a9cbd9e6a230ad6f6f1be3d37298197b2",
+      "revision": "R02"
+    },
+    {
+      "registerId": "F0226",
+      "filename": "DC01-DTI-NOC-01-SH-X-0002.json",
+      "bytes": 1502,
+      "sha256": "2f5eb9d6948629d290f1831b2379c87df38645660b6fdf61f0700af31b1b78ff",
+      "revision": "R02"
+    },
+    {
+      "registerId": "F0237",
+      "filename": "DC01-IMT-SITE-ZZ-RP-X-0005.pdf",
+      "bytes": 30805,
+      "sha256": "d92659d0425d0f1c2b86ff51c6764cf7e28d82e0a8bd96feef248a3f4e48b2ee",
+      "revision": "R02"
+    }
+  ]
+}

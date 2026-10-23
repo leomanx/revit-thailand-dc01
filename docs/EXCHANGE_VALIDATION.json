@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-22",
+  "ifc": {
+    "reader": "0.9.0.post1",
+    "schema": "IFC4",
+    "entities": 424,
+    "proxies": 24,
+    "meshedShapes": 24,
+    "schemaFindings": 0,
+    "expressRulesExecuted": false,
+    "limitation": "Schema/geometry validation, not engineering, coordination, performance or certification."
+  },
+  "bcf": {
+    "version": "2.1",
+    "officialSchemas": "https://github.com/buildingSMART/BCF-XML/tree/release_2_1/Schemas",
+    "validatedXmlMembers": 8,
+    "topics": 3,
+    "limitation": "XSD and linked IFC GUID checks; no receiving commercial viewer interoperability test."
+  },
+  "json": {
+    "assetMappings": 24,
+    "syntheticCases": 5
+  },
+  "pdf": {
+    "pages": 15,
+    "stagePages": 14,
+    "visualReview": "Prior all-page/first/source-page inspection retained; this run checked page text/structure only.",
+    "visualReviewDate": "2026-10-21"
+  },
+  "zip": {
+    "files": 7,
+    "crc": "pass",
+    "sha256": "all 5 payloads match manifest"
+  }
+}

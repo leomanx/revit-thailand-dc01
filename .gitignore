@@ -1,0 +1,14 @@
+tmp/
+output/
+node_modules/
+*.log
+dist/
+.netlify/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+__pycache__/
+*.pyc
