@@ -144,8 +144,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 3432,
-      "sha256": "15399f89eb23bc01b4b476dcd65c1ca905a8308ca84eaa7e7454f2daba6ae151"
+      "bytes": 3789,
+      "sha256": "b1ef019f0a44a61dba08f55a5076f062d13adb52045e8a4206b5d013ef8a4167"
     },
     {
       "path": "docs/EXCHANGE_VALIDATION.json",
@@ -159,8 +159,8 @@
     },
     {
       "path": "docs/PUBLIC_BETA_REVIEW.md",
-      "bytes": 11118,
-      "sha256": "fb8dcc41f16d99059982c3084a8b07bdf4504dfabcd560aa55ccab8407d0890c"
+      "bytes": 11465,
+      "sha256": "5541473e7c4bf334907b0a808f62c16570bc983b030d15bb6c0dd836cedf6893"
     },
     {
       "path": "docs/ROLE_RESPONSIBILITY.md",
@@ -179,8 +179,8 @@
     },
     {
       "path": "feedback-template.md",
-      "bytes": 1706,
-      "sha256": "16c983e9beebbb79c2f81d0703fd45c6ea73680afc82c7e1d8e9b76f796819b2"
+      "bytes": 1695,
+      "sha256": "c38e69cee31c30bdcbdcdac69a04d270b7231496e056eb0c0a380d381db51ffa"
     },
     {
       "path": "index.html",
@@ -219,13 +219,13 @@
     },
     {
       "path": "public-notes.html",
-      "bytes": 11864,
-      "sha256": "14d6aa3b2a0dff297c14c8af480c000fa82667bfc67d5d0576d88118f34f55c5"
+      "bytes": 11911,
+      "sha256": "621f044a07171f4dbb48ad80ef3076ac0f146aab73e57f89ca250885e93a4179"
     },
     {
       "path": "README.md",
-      "bytes": 9957,
-      "sha256": "bd31a408b4091f0b8fc8651ad4988dc2d6ef4fd376e088e8235ce5c4bb27827a"
+      "bytes": 10190,
+      "sha256": "6eb08890e2f9ee8d548b6503337e7a5b70c6572cdcc5772ed633390e8be54998"
     },
     {
       "path": "samples/DC01-DTI-NOC-01-SH-X-0001.json",
@@ -319,8 +319,8 @@
     },
     {
       "path": "tests/publish-github.test.py",
-      "bytes": 6097,
-      "sha256": "929ccc097b7a87c46c340194b9314a4e0809caf4fa02feab612e34189c9783b0"
+      "bytes": 6736,
+      "sha256": "2ef88b298d4aa0fb1b9ba00da5a73eabab9033ad2714c04d26b55e9cc153fc06"
     },
     {
       "path": "tests/repository-bytes.test.cjs",
@@ -389,8 +389,8 @@
     },
     {
       "path": "tools/publish-github.py",
-      "bytes": 8278,
-      "sha256": "4903b8b2f150e0d29c93c3fd1e9de67518f7879a3b507eba1ffcf66a6eaed2e6"
+      "bytes": 8633,
+      "sha256": "755d99ce97a8fa968888663edfa7cfed2562151b02a1009f5867520a627909de"
     },
     {
       "path": "tools/render-architecture-preview.cjs",

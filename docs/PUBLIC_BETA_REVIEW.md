@@ -2,7 +2,7 @@
 
 2026-10-22 · 2.7.0-beta.1 · dataset `cfecfc6b46226c9100dd`
 
-**Verdict: source is prepared for GitHub review; follower-facing release is a public-beta candidate, pending real-browser/mobile acceptance and actual hosted CI/URL checks.** Not published in this review. No repository, push, Actions run, or hosting deployment has been created or claimed.
+**Publication update, 2026-10-24: public beta is live at [GitHub Pages](https://leomanx.github.io/revit-thailand-dc01/) with [source and Actions](https://github.com/leomanx/revit-thailand-dc01).** The Pages workflow succeeded; public payload hashes were checked, and the landing page, access-request layout and Architecture Lab were opened in a real desktop browser. Full mobile, keyboard and screen-reader acceptance remains pending. This is an educational beta, not a certified engineering or production access-control system.
 
 The purpose is an educational sandbox, not an accredited engineering design, real CDE, plant control system, selected manufacturer solution or compliance tool. Publicly stating this scope makes substantive technical critique easier to address; it does not excuse an incorrect explanation. Findings supported by context should be corrected.
 
@@ -23,7 +23,7 @@ The purpose is an educational sandbox, not an accredited engineering design, rea
 | Downloadable examples | IFC4 424 entities / 24 proxies meshed / zero schema findings; BCF 2.1 8 XML members / 3 topics validated; 24 mappings; 15 PDF pages; sample CRC/hashes pass on rerun | EXPRESS rules not executed; optional lark unavailable; no receiving commercial viewer test. PDF visual inspection retained from 2026-10-21, not rerun as browser QA |
 | Build / payload | 37 static files including manifest, 80 local references without missing targets; HTTP root and 36 payloads under `/dc01/` match hashes; SHA checks, reproducible builds, safe output boundaries and public-pattern scan pass | pattern scan is not exhaustive secret detection; hosted origin and actual base URL not yet available |
 | Privacy / source | public site contains no known credential patterns, personal machine paths, external runtime CDN or runtime network-call code; curated repository ZIP excludes internal prompts/handoffs and local/generated folders; clean extracted source passes tests/build/audit and produces the same static manifest | host may keep logs; local user text must be reviewed before sending sessions/Issues; no selected reuse license |
-| Automated validation | **154 tests passed**; syntax/build/audit and exchange validator rerun; actual architecture renderer contact sheet inspected | DOM fixtures/native renders do not prove browser/mobile/screen-reader behavior or WCAG conformance |
+| Automated validation | **155 Node tests and 5 mocked publisher tests passed**; syntax/build/audit and exchange validator rerun; actual architecture renderer contact sheet inspected; GitHub Pages workflow executed | DOM fixtures/native renders and limited desktop smoke checks do not prove full browser/mobile/screen-reader behavior or WCAG conformance |
 
 ## Corrections made in this review
 
@@ -61,6 +61,6 @@ The existing browser-tool URL acquisition for localhost was explicitly rejected 
 - [OSHA 1910.147](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.147) and [contractor coordination](https://www.osha.gov/etools/lockout-tagout/tutorial/outside-personnel): limited hazardous-energy role/coordination principles, not Thai or electrical compliance instructions.
 - [UL door / frame / hardware guide](https://www.ul.com/thecodeauthority/knowledge/ul-fire-rated-doors-guide): assembly scope and components; no sampled product is UL certified by this exercise.
 - [GSA EPD guidance](https://www.gsa.gov/governmentwide-initiatives/federal-highperformance-buildings/highperformance-building-clearinghouse/integrative-design-strategies/life-cycle-perspective/environmental-product-declaration): EPD does not itself imply environmental superiority.
-- [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [checkout](https://github.com/actions/checkout), [setup-node](https://github.com/actions/setup-node): current official workflow references; actual repository runner remains unexecuted.
+- [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [checkout](https://github.com/actions/checkout), [setup-node](https://github.com/actions/setup-node): official workflow references; actual Pages runner executed successfully on 2026-10-24.
 
 An informed reader can legitimately question scope, assumptions or missing evidence. The useful response is an exact file/assembly/context reference, a correction where needed, and an explicit boundary where this is a study rather than a verified design. No claim of immunity from criticism is made.

@@ -1,6 +1,6 @@
 # GitHub / Pages publication
 
-User authorized publication on 2026-10-22. Target: public repository `leomanx/revit-thailand-dc01` and GitHub Pages. Repository creation, push, Pages configuration and a live URL are **not completed** as of the failed connectivity attempt. The connected GitHub app confirms account `leomanx` and reports target repository not found; it does not expose repository-creation / Pages-management tools. Local API and browser attempts timed out. No DNS, firewall, proxy or security configuration was changed.
+Published on 2026-10-24 after the user's authorization: [public repository](https://github.com/leomanx/revit-thailand-dc01) and [live GitHub Pages site](https://leomanx.github.io/revit-thailand-dc01/). GitHub Desktop and Git Credential Manager were available locally; normal Git credentials were used without exposing tokens. The Pages workflow completed successfully and the public landing page, access-request layout and Architecture Lab were opened in a real desktop browser. Full mobile, keyboard and screen-reader acceptance remains pending. No DNS, firewall, proxy or security configuration was changed.
 
 ## Credits
 
@@ -8,7 +8,7 @@ This publisher uses no Netlify service and performs no purchase or plan upgrade.
 
 For a [Netlify credit-based plan](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/), a successful production deployment consumes credits even when the static output was built locally; requests/bandwidth can also use credits. [Exhausted team allowances can pause sites/deploys](https://docs.netlify.com/manage/accounts-and-billing/billing/resume-paused-projects/). This review did not inspect or change the user's actual Netlify plan/balance. A local compile does not bypass those account limits.
 
-## Run when GitHub is reachable
+## Publish or resume a reviewed source seed
 
 From this checkout, with the normal Git Credential Manager account authenticated as `leomanx`:
 
@@ -24,6 +24,6 @@ The initial publisher refuses nonempty unrelated or different-version repositori
 
 ## Offline checks
 
-`python tests/publish-github.test.py` performs four mocked tests: wrong account stops; nonempty repository cannot be overwritten; modified archive stops before credential/network use; the initial-publication flow checks dispatch and hosted payload hashes without leaking authorization to Pages. No real repository, token or deployment is used by these tests. These checks run in the prepared GitHub workflows in addition to the 154 Node tests.
+`python tests/publish-github.test.py` performs five mocked tests: wrong account stops; nonempty repository cannot be overwritten; modified archive stops before credential/network use; the initial-publication flow checks dispatch and hosted payload hashes without leaking authorization to Pages; only the exact empty `.nojekyll` hosting control marker is excluded from HTTP payload verification. No real repository, token or deployment is used by these tests. These checks run in GitHub workflows in addition to the 155 Node tests. Git attributes preserve reviewed file bytes across Windows and Linux, including offline exchange downloads.
 
-Source assets remain a public beta with real browser/mobile acceptance pending. Use the scope in `public-notes.html`; do not describe a completed CI/hosting deployment until its actual result and hosted payloads have been verified.
+Source assets remain a public beta. Use the scope in `public-notes.html`. Each successful publisher run saves actual workflow URLs and hosted-payload verification counts to local `output/deployment-report.json`; this generated receipt is excluded from the public repository.

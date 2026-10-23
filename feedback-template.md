@@ -1,6 +1,6 @@
 # ข้อเสนอแก้ไข / Revit Thailand DC01 public beta
 
-ส่งข้อความนี้ให้ผู้ดูแลเพจ หรือเปิด GitHub Issue ใน repository ของโครงการเมื่อประกาศ URL แล้ว
+ส่งข้อความนี้ให้ผู้ดูแลเพจ หรือเปิด [GitHub Issue ของโครงการ](https://github.com/leomanx/revit-thailand-dc01/issues)
 
 - รุ่น: 2.7.0-beta.1 (ตรวจ release-manifest.json หากมีรุ่นใหม่)
 - หน้า / view:

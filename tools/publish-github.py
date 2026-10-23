@@ -17,6 +17,9 @@ def run(args,cwd=ROOT):
     if r.returncode:raise RuntimeError('Command failed: '+args[0]+' '+args[1]+'; '+r.stderr.strip())
     return r.stdout.strip()
 
+def is_hosting_control(entry):
+    return entry.get('path')=='.nojekyll' and entry.get('bytes')==0 and entry.get('sha256')==hashlib.sha256(b'').hexdigest()
+
 def main():
     archive=ROOT/'output/DC01-github-source.zip'
     if not archive.is_file():raise RuntimeError('Run python tools/package-public-source.py first')
@@ -103,10 +106,14 @@ def main():
             remote_release=json.loads(public_get('release-manifest.json'));break
         except (urllib.error.URLError,ValueError):time.sleep(5)
     if not remote_release or remote_release.get('appVersion')!=manifest['version']:raise RuntimeError('Public release version is not yet visible')
+    controls=[];verified=0
     for e in remote_release['files']:
+        if is_hosting_control(e):
+            controls.append(e['path']);continue
         if hashlib.sha256(public_get(e['path'])).hexdigest()!=e['sha256']:raise RuntimeError('Hosted payload digest mismatch: '+e['path'])
+        verified+=1
     report={'repository':'https://github.com/'+FULL,'site':site,'version':manifest['version'],'workflow':run_info['html_url'],
-            'hostedPayloadHashes':'pass','files':len(remote_release['files']),'netlifyUsed':False}
+            'hostedPayloadHashes':'pass','files':len(remote_release['files']),'verifiedPublicPayloads':verified,'hostControlFiles':controls,'netlifyUsed':False}
     (ROOT/'output/deployment-report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

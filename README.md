@@ -1,6 +1,8 @@
 # Revit Thailand — DC01 Learning Lab
 
-**2.7.0-beta.1 · Public beta candidate · ข้อมูลสมมติทั้งโครงการ**
+**2.7.0-beta.1 · Public beta · ข้อมูลสมมติทั้งโครงการ**
+
+ทดลองใช้: [DC01 Learning Lab](https://leomanx.github.io/revit-thailand-dc01/) · [GitHub repository / แจ้งปัญหา](https://github.com/leomanx/revit-thailand-dc01)
 
 เครื่องมือเรียนรู้ความสัมพันธ์ระหว่างพื้นที่ โมเดล เอกสาร คน และการตัดสินใจ ด้วยกรณี Data Center สมมติ ไม่ใช่ ACC integration, BIM authoring software หรือระบบอนุมัติงานจริง
 
@@ -41,7 +43,7 @@ npm run preview:static
 ก่อน build สำหรับ hosting ตั้ง `SITE_URL` เป็น HTTPS base URL จริงรวม repository subpath เช่น `https://owner.github.io/repository/` เพื่อให้ social metadata ถูกปลายทาง ไม่ใช้ URL ตัวอย่างเป็นปลายทางจริง
 
 - `.github/workflows/checks.yml`: tests → build → public payload audit บน push / PR ไม่มี deploy
-- `.github/workflows/pages.yml`: manual Pages publish; ต้องตั้ง Pages source เป็น GitHub Actions ก่อน งานนี้ยังไม่ได้สร้าง repo / push / run CI / deploy
+- `.github/workflows/pages.yml`: manual Pages publish ผ่าน GitHub Actions; เผยแพร่เว็บจริงแล้วเมื่อ 2026-10-24 ดูขั้นตอนและขอบเขตการตรวจใน `docs/DEPLOYMENT.md`
 - `netlify.toml`: static build configuration; การ deploy ยังขึ้นกับบัญชี/สิทธิ์และข้อจำกัดของ hosting
 - `python tools/package-static.py`: ZIP เฉพาะ public payload ที่ตรวจ hashes แล้ว
 - `python tools/package-public-source.py`: curated GitHub source ZIP พร้อม hashes ไม่รวม internal prompts / handoffs / local state

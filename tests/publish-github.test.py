@@ -26,6 +26,10 @@ class PublisherTests(unittest.TestCase):
         return SimpleNamespace(returncode=0,stdout='',stderr='')
     def response(self,obj):return io.BytesIO(json.dumps(obj).encode())
     def missing(self,url):raise urllib.error.HTTPError(url,404,'Not found',{},None)
+    def test_only_exact_empty_nojekyll_marker_is_hosting_control(self):
+        entry={'path':'.nojekyll','bytes':0,'sha256':hashlib.sha256(b'').hexdigest()}
+        self.assertTrue(pub.is_hosting_control(entry))
+        for change in [{'path':'README.md'},{'path':'.other'},{'bytes':1},{'sha256':'incorrect'}]:self.assertFalse(pub.is_hosting_control({**entry,**change}))
     def test_wrong_account_stops_before_any_repository_change(self):
         with patch.object(pub.subprocess,'run',side_effect=self.process),patch.object(pub.urllib.request,'urlopen',return_value=self.response({'login':'another-account','id':1})):
             with self.assertRaisesRegex(RuntimeError,'account differs'):pub.main()
@@ -53,7 +57,7 @@ class PublisherTests(unittest.TestCase):
             url=req.full_url;method=req.get_method();self.requests.append((url,method))
             if url.startswith('https://leomanx.github.io/'):
                 self.assertNotIn('Authorization',req.headers)
-                if url.endswith('release-manifest.json'):return self.response({'appVersion':self.manifest['version'],'files':self.manifest['files']})
+                if url.endswith('release-manifest.json'):return self.response({'appVersion':self.manifest['version'],'files':self.manifest['files']+[{'path':'.nojekyll','bytes':0,'sha256':hashlib.sha256(b'').hexdigest()}]})
                 return io.BytesIO(self.content)
             self.assertEqual(req.headers.get('Authorization'),'Bearer offline-test-only')
             if url.endswith('/user'):return self.response({'login':'leomanx','id':30502564})
@@ -72,7 +76,7 @@ class PublisherTests(unittest.TestCase):
         with patch.object(pub.subprocess,'run',side_effect=self.process),patch.object(pub.urllib.request,'urlopen',side_effect=network),patch('builtins.print'):
             pub.main()
         report=json.loads((self.root/'output/deployment-report.json').read_text())
-        self.assertEqual(report['hostedPayloadHashes'],'pass');self.assertFalse(report['netlifyUsed'])
+        self.assertEqual(report['hostedPayloadHashes'],'pass');self.assertFalse(report['netlifyUsed']);self.assertEqual(report['verifiedPublicPayloads'],1);self.assertEqual(report['hostControlFiles'],['.nojekyll']);self.assertFalse(any(url.endswith('/.nojekyll') for url,_ in self.requests))
         self.assertNotIn('offline-test-only',json.dumps(report)+json.dumps(self.processes))
         self.assertTrue(any(args[:2]==['git','push'] for args in self.processes))
 
