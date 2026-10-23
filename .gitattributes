@@ -1,0 +1,3 @@
+# Preserve reviewed bytes, embedded download payloads and SHA-256 manifests.
+# Git's automatic CRLF/LF conversion must not change the exchange samples.
+* -text

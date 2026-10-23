@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json,re,zipfile
 
 root=Path(__file__).resolve().parents[1]
-names=['README.md','package.json','.gitignore','netlify.toml','START-DC01.cmd',
+names=['README.md','package.json','.gitignore','.gitattributes','netlify.toml','START-DC01.cmd',
        'index.html','landing.html','datacenter.html','public-notes.html','feedback-template.md',
        'dc.css','dc-engine.js','dc-detail.js','dc-viewer.js','dc-ui.js','dc-zoning.js','dc-maintenance.js','dc-architecture.js',
        'lab.css','lab-engine.js','lab-ui.js','showcase.css','showcase.js']

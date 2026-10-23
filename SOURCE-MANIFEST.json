@@ -3,6 +3,11 @@
   "version": "2.7.0-beta.1",
   "files": [
     {
+      "path": ".gitattributes",
+      "bytes": 160,
+      "sha256": "6d312d27cfbe5b1990e93dd1aaaf7e79afda172f8808159f509fa35a1b1c482b"
+    },
+    {
       "path": ".github/ISSUE_TEMPLATE/bug.yml",
       "bytes": 1146,
       "sha256": "40d1e43abf0e825e3c854d413e3218750ca92dee7c438ed32ffe65726243ec8c"
@@ -318,6 +323,11 @@
       "sha256": "929ccc097b7a87c46c340194b9314a4e0809caf4fa02feab612e34189c9783b0"
     },
     {
+      "path": "tests/repository-bytes.test.cjs",
+      "bytes": 1317,
+      "sha256": "2baa5859f8fbedc77598853a235ea7631ff0cea8d7a5a9be80850c56de5200e0"
+    },
+    {
       "path": "tests/service-detail.test.cjs",
       "bytes": 7814,
       "sha256": "240e0791615eeaf7e4f92666d5009061c9a9b7193eab5cdc40fce66cbe785d10"
@@ -364,13 +374,13 @@
     },
     {
       "path": "tools/package-dc.py",
-      "bytes": 1182,
-      "sha256": "e77aa6f2c357c1991a347a71a930c68bd0545341b0762ac0ffb663fb8c238d51"
+      "bytes": 1199,
+      "sha256": "0606404a7bc6c330468519f281c95ca6be79fc4b21e10fab99cbec6e62ddcf61"
     },
     {
       "path": "tools/package-public-source.py",
-      "bytes": 2996,
-      "sha256": "e2fd8c6dab10b44514b6103f64dcb52e34780de8ae27d7aa5636880b0128b0f3"
+      "bytes": 3013,
+      "sha256": "2bb5e7a3868d962e5ec70475d0f4397ebaec8cf00a46b31769345985bcf0940b"
     },
     {
       "path": "tools/package-static.py",
