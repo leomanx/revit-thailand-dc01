@@ -204,6 +204,7 @@
      <div class="small"><strong>SSL:</strong> +${(zv?.ssl??0).toFixed(2)}m · <strong>FFL:</strong> +${(zv?.ffl??0).toFixed(2)}m · <strong>Ceiling:</strong> ${zv?.ceilingH?'+'+zv.ceilingH.toFixed(2)+'m':'Open'} · <strong>Soffit:</strong> +${(zv?.soffit??0).toFixed(2)}m</div>
      <div class="small"><strong>Lead:</strong> ${h(z.lead)} · <strong>Scope:</strong> ${h(z.scope)}</div>
     </div>
+    ${!service?(window.DCBuilding?.zonePanel(D,z.id,V?.getState().selectedBuilding)||''):''}
     ${service?renderServiceInspector(service):''}
     ${a?`<span class="eyebrow">OBJECT INSPECTOR · ${h(a.objectId)} · GRID ${h(a.spatial?.gridRef||'—')}</span>
     <h2 style="margin:4px 0 6px">${h(a.tag)} <small class="small">(${h(a.type)})</small></h2>
@@ -229,7 +230,7 @@
     <div class="inspector-tabs" role="group" aria-label="ข้อมูลวัตถุ">
      ${[['docs','Documents ('+insp.docs.length+')'],['issues','Issues ('+insp.issues.length+')'],['evidence','Evidence'],['deps','14-Stage Thread'],['access','Access ('+actor+')']].map(([k,lbl])=>`<button data-do="inspectorTab" data-value="${k}" class="${inspectorTab===k?'active':''}" aria-pressed="${inspectorTab===k}">${h(lbl)}</button>`).join('')}
     </div>
-    <div>${renderInspectorContent(insp)}</div>`:`<div class="callout">${service?'เลือก service assembly อยู่ เลือก Asset จาก Object Tree เพื่อดูข้อมูลเฉพาะชิ้น':'โซน '+h(z.id)+' ไม่มีอุปกรณ์ตัวอย่าง เลือกวัตถุจาก Object Tree เพื่อดูข้อมูลเฉพาะชิ้น หรือเปิดทะเบียนไฟล์ของโซนนี้'}</div>${button('เปิดไฟล์โซน '+h(z.id),'zoneFiles',`data-id="${z.id}"`,'small')}`}
+    <div>${renderInspectorContent(insp)}</div>`:`<div class="callout">${service?'เลือก service assembly อยู่ เลือก Asset จาก Object Tree เพื่อดูข้อมูลเฉพาะชิ้น':'โซน '+h(z.id)+' ไม่มีอุปกรณ์ตัวอย่างในทะเบียน FM; องค์ประกอบห้องด้านบนเป็น teaching objects แยกจากทะเบียนนี้ เปิดไฟล์โซนเพื่อดูบริบทโครงการได้'}</div>${button('เปิดไฟล์โซน '+h(z.id),'zoneFiles',`data-id="${z.id}"`,'small')}`}
    </aside>
   </div>
 
@@ -438,7 +439,8 @@
   const canvas=$('dc-3d-canvas');
   if(!canvas||!V)return;
   V.bindCanvas(canvas,D,()=>({selectedZone,selectedAsset}),hit=>{
-   if(hit.kind==='service'){selectedService=hit.id;selectedAsset=null;selectedZone=hit.zoneId;V.command('selectService:'+hit.id,D,{selectedZone,selectedAsset});}
+   if(hit.kind==='building'){selectedService=null;selectedAsset=null;selectedZone=hit.zoneId;V.command('selectBuilding:'+hit.id,D,{selectedZone,selectedAsset});}
+   else if(hit.kind==='service'){selectedService=hit.id;selectedAsset=null;selectedZone=hit.zoneId;V.command('selectService:'+hit.id,D,{selectedZone,selectedAsset});}
    else if(hit.kind==='asset'){selectedService=null;V.command('clearService',D,{selectedZone,selectedAsset});
     selectedAsset=hit.id;
     selectedZone=hit.zoneId;
@@ -459,7 +461,7 @@
   document.querySelectorAll('#dc-nav [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});
   $('dc-actor').value=actor;
   const bc=$('dc-breadcrumb');
-  if(bc)bc.innerHTML=`DC01 <span>/</span> ${h(viewLabels[view]||view)} <span>/</span> โซน ${h(selectedZone)} · วัตถุ ${h(D.assets.find(a=>a.id===selectedAsset)?.tag||selectedService||'ไม่มีวัตถุ')}`;
+  if(bc)bc.innerHTML=`DC01 <span>/</span> ${h(viewLabels[view]||view)} <span>/</span> โซน ${h(selectedZone)} · วัตถุ ${h(D.assets.find(a=>a.id===selectedAsset)?.tag||selectedService||V?.getState().selectedBuilding||'ไม่มีวัตถุ')}`;
   const content=$('dc-content'),oldStage=content.querySelector('.viewer-stage');
   const html=({overview,architecture:architectureView,maintenance:maintenanceView,play:playView,atlas,files:filesView,lifecycle,assets:assetsView,journal,guide,access:accessView,impact:dashboard})[view]();
   if(view==='atlas'&&oldStage){
@@ -494,6 +496,8 @@
   e.preventDefault();const {do:action,id,target,value,option,req,cmd,state:stVal,zone:znVal}=b.dataset;
   if(action==='view')setView(target);
   else if(action==='stage'){selectedStage=id;if($('file-dialog').open)$('file-dialog').close();setView('lifecycle');}
+  else if(action==='exportBuildingBrief'){const B=window.DCBuilding,p=B?.profiles[id];if(p)download('DC01-'+id+'-preliminary-material-brief.json',JSON.stringify({schema:'DC01-room-brief-v1',zone:id,status:'ILLUSTRATIVE / NOT APPROVED / NOT A CDE REGISTER FILE',profile:p,specifications:Object.fromEntries(p.specs.map(k=>[k,B.specs[k]])),components:B.build(D,{isolateZone:true},id).map(g=>({id:g.id,label:g.label,specs:g.specs})),notice:'Fictional project assumptions; TBC requires a real design brief, applicable code and evidence. No live approval, FM identity or IFC geometry supplied.'},null,2));}
+  else if(action==='buildingPart'){const g=window.DCBuilding?.build(D,{levelFilter:'ALL'},'SITE').find(g=>g.id===id);if(g){selectedZone=g.zoneId;selectedAsset=null;selectedService=null;V?.command('selectBuilding:'+id,D,{selectedZone,selectedAsset});render();}}
   else if(action==='zone'){selectedService=null;V?.command('clearService',D,{selectedZone,selectedAsset});selectedZone=id;const first=D.assets.find(a=>a.zone===id);if(D.assets.find(a=>a.id===selectedAsset)?.zone!==id)selectedAsset=first?.id||null;render();}
   else if(action==='selectService'){const service=D.scene.serviceDetail?.services.find(s=>s.id===id);if(service){selectedService=id;selectedAsset=null;selectedZone=service.zone;V?.command('selectService:'+id,D,{selectedZone,selectedAsset});setView('atlas');}}
   else if(action==='select3dAsset'){selectedAsset=id;const a=D.assets.find(x=>x.id===id);if(a)selectedZone=a.zone;render();V?.command('fitAsset',D,{selectedZone,selectedAsset});}

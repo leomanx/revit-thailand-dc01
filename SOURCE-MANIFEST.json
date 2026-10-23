@@ -79,13 +79,18 @@
     },
     {
       "path": "datacenter.html",
-      "bytes": 5455,
-      "sha256": "e8efbe18eaaa2872835f818f051324cc94cb0425ceffd72e06132b25cdcd1b89"
+      "bytes": 5545,
+      "sha256": "99de2b1a83f0c49989f0265ad49180986e86ab94971370c65460f541e84b85ea"
     },
     {
       "path": "dc-architecture.js",
-      "bytes": 30503,
-      "sha256": "599301c9460764ec7406c27cf36ea4a93d69adc228e3562064e56dfb98fe4443"
+      "bytes": 30573,
+      "sha256": "bc12683376ff8c5e3aef739ff5fa582dc2726fa2dc7392381fd7b76c390d4ec7"
+    },
+    {
+      "path": "dc-building.js",
+      "bytes": 29953,
+      "sha256": "472f796533d74f0a0655032257c391312a37de1dc04e120a14109ba0ff9594e2"
     },
     {
       "path": "dc-detail.js",
@@ -104,13 +109,13 @@
     },
     {
       "path": "dc-ui.js",
-      "bytes": 128522,
-      "sha256": "e785acedb30033e4f0511377d4726a6b806d15cdce26eccdfd5521da4b074d41"
+      "bytes": 129746,
+      "sha256": "24af1e3e06fdb3f2a78783c8c6d2ba4c96b396c0c1f45168d49f884abe965592"
     },
     {
       "path": "dc-viewer.js",
-      "bytes": 53967,
-      "sha256": "92be9af9970d16812359a4e0d0ad05a4473310f37b001343852768c2210a5391"
+      "bytes": 55134,
+      "sha256": "2c34e95c6e7a30cc44eee0b30d2e7e3bc0bd6dbdf4fa462fb1221b9f1c5192f7"
     },
     {
       "path": "dc-zoning.js",
@@ -119,8 +124,8 @@
     },
     {
       "path": "dc.css",
-      "bytes": 41943,
-      "sha256": "1b580a8d9a23b0a1cfcdb8b55290a6753ba508bea8978d52257403c08e912d76"
+      "bytes": 42848,
+      "sha256": "65338770ab78b1f7902310f644550c6d0062af9b9fb237ae75379eaf92f81f47"
     },
     {
       "path": "docs/ARCHITECTURE_LAB.md",
@@ -144,8 +149,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 3789,
-      "sha256": "b1ef019f0a44a61dba08f55a5076f062d13adb52045e8a4206b5d013ef8a4167"
+      "bytes": 3818,
+      "sha256": "c2749f75e8eef6a93bbb1fefd40725fcd1d7b487554612472f69dd1d7b277d05"
     },
     {
       "path": "docs/EXCHANGE_VALIDATION.json",
@@ -160,12 +165,17 @@
     {
       "path": "docs/PUBLIC_BETA_REVIEW.md",
       "bytes": 11465,
-      "sha256": "5541473e7c4bf334907b0a808f62c16570bc983b030d15bb6c0dd836cedf6893"
+      "sha256": "33fc6d3b73a43bec0249f6aaaaa4b623c877f5961364fac05c882cc17dcc02c5"
     },
     {
       "path": "docs/ROLE_RESPONSIBILITY.md",
       "bytes": 6151,
       "sha256": "488eed68402b9966f522a682be16061c7aaf34d3b455524860bd5a0b04b38e4d"
+    },
+    {
+      "path": "docs/ROOM_FITOUT.md",
+      "bytes": 4251,
+      "sha256": "520834fa4e9cbd1807fe9e31c2591e765d7122b0112abc5354abf11f844175bc"
     },
     {
       "path": "docs/SERVICE_MODEL_DETAIL.md",
@@ -219,13 +229,13 @@
     },
     {
       "path": "public-notes.html",
-      "bytes": 11911,
-      "sha256": "621f044a07171f4dbb48ad80ef3076ac0f146aab73e57f89ca250885e93a4179"
+      "bytes": 13058,
+      "sha256": "1ba097545888edaf86dfbd90adfc70f7a7b5fd01f617dd82c8787dcf3badbb11"
     },
     {
       "path": "README.md",
-      "bytes": 10190,
-      "sha256": "6eb08890e2f9ee8d548b6503337e7a5b70c6572cdcc5772ed633390e8be54998"
+      "bytes": 10639,
+      "sha256": "9ccccbc1909dc31f449a8e3e819b7d3021e9d1e631a67268cb775751819d3b08"
     },
     {
       "path": "samples/DC01-DTI-NOC-01-SH-X-0001.json",
@@ -286,6 +296,11 @@
       "path": "tests/architecture.test.cjs",
       "bytes": 5002,
       "sha256": "7e5d65a44a16db98c41e5c6734528e4a2b9d997f950a3b73c819fdba581fb040"
+    },
+    {
+      "path": "tests/building-fitout.test.cjs",
+      "bytes": 4407,
+      "sha256": "d62ad9674755a91010bd4bed07538fc68445533c7f31ed03fbe40e695d3a289c"
     },
     {
       "path": "tests/datacenter.test.cjs",
@@ -349,8 +364,8 @@
     },
     {
       "path": "tools/audit-public.cjs",
-      "bytes": 2698,
-      "sha256": "7b56f7c6199b6185d2642daa7b56615996127898b9c4e0993066b35a906f3cc4"
+      "bytes": 2739,
+      "sha256": "c5d929fcace68d42cdf428e039953a01b12ba9fad460f36dc88a11d15bb115ca"
     },
     {
       "path": "tools/build-datacenter.cjs",
@@ -369,18 +384,18 @@
     },
     {
       "path": "tools/build-static.cjs",
-      "bytes": 6579,
-      "sha256": "9132b35e63b38a1a67c7847b15e1efe8d789cedeca368b35667a616ebd3ba460"
+      "bytes": 6596,
+      "sha256": "fbdf3953ad1b677cb6ad71aa89dae8a731f7072b043c24122b0b596be540d8fb"
     },
     {
       "path": "tools/package-dc.py",
-      "bytes": 1199,
-      "sha256": "0606404a7bc6c330468519f281c95ca6be79fc4b21e10fab99cbec6e62ddcf61"
+      "bytes": 1216,
+      "sha256": "8af2793b31cd8e124770b0432f2134df2bb965062c1847883786f95a66a906d2"
     },
     {
       "path": "tools/package-public-source.py",
-      "bytes": 3013,
-      "sha256": "2bb5e7a3868d962e5ec70475d0f4397ebaec8cf00a46b31769345985bcf0940b"
+      "bytes": 3047,
+      "sha256": "2b750c90f583d6ae32dfa90dfc18b1090a0112824b350e605c4cd53b3665d7ef"
     },
     {
       "path": "tools/package-static.py",

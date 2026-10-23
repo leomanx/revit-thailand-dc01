@@ -19,6 +19,9 @@ npm start
 
 ## ทดลองอะไรได้
 
+Room fit-out เพิ่มองค์ประกอบ NOC / Office / MMR และพื้นที่อื่นรวม 39 กลุ่ม เลือกชิ้นส่วน 3D เพื่อเปิดเกณฑ์วัสดุ 11 schedules / 36 criteria พร้อม export brief JSON ดู `docs/ROOM_FITOUT.md`; ค่าเป็นเป้าหมายสมมติ ไม่ใช่ approved specification
+
+
 - 3D / zones / services: Canvas scene พร้อม 19 representative assemblies และ 24 assets เชื่อมข้อมูลกับ file register และ access policy
 - Zone Quest: 3 ภารกิจจัดกล่องพร้อมเส้นสัมพันธ์ snap / group / undo / hints ไม่มีตัวนับจำนวนขยับบนหน้าเกม
 - Architecture Lab (`#view=architecture`): 7 กลุ่มพื้น ผนัง ฝ้า หลังคา façade ประตู ทางเข้าถึง; 3D layer study, spec / material substitutions, interfaces และ conceptual sun / wind / rain orientation

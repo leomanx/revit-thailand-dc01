@@ -16,7 +16,7 @@ function audit(dir=path.join(ROOT,'dist')){
    if(f.path.endsWith('.js')&&/\b(?:fetch|XMLHttpRequest|WebSocket|sendBeacon)\s*\(/.test(s))report('runtime-network-call-requires-review',f.path);
   }
  }
- const required=['dc-architecture.js','dc-maintenance.js','dc-zoning.js','public-notes.html','feedback-template.md'];
+ const required=['dc-building.js','dc-architecture.js','dc-maintenance.js','dc-zoning.js','public-notes.html','feedback-template.md'];
  for(const file of required)if(!manifest.files.some(f=>f.path===file))report('missing-public-beta-content',file);
  return {schema:'DC01-public-audit-v1',appVersion:manifest.appVersion,datasetId:manifest.datasetId,files:manifest.files.length+1,links:validate(dir),checks:['manifest hashes','runtime file boundaries','known credential patterns','local machine references','external runtime dependencies','runtime network calls','required beta content'],findings,limitations:'Pattern scan is not a guarantee of absence of secrets. Does not prove browser layout, engineering compliance, source licensing or hosted deployment.'};
 }

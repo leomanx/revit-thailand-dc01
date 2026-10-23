@@ -9,9 +9,10 @@
 (function(root){
  'use strict';
  const DETAIL=root.DCDetail||(typeof require==='function'?require('./dc-detail.js'):null);
+ const BUILDING=root.DCBuilding||(typeof require==='function'?require('./dc-building.js'):null);
  const STATE={
   yaw:-0.58,pitch:0.52,distance:52,targetX:18.5,targetY:18.0,targetZ:1.8,
-  selectedService:null,showServiceDetail:true,isolateService:false,
+  selectedBuilding:null,selectedService:null,showServiceDetail:true,isolateService:false,
   viewMode:'iso', // 'iso' | 'top' | 'south' | 'east'
   levelFilter:'ALL', // 'ALL' | '00' | '01' | 'RF'
   showSite:true,showDuctBanks:true,showClearance:true,showRoutes:true,showElevations:true,showLabels:true,
@@ -105,7 +106,7 @@
    if(STATE.levelFilter!=='ALL'&&zv.level!==STATE.levelFilter)continue;
    if(STATE.isolateZone&&selectedZone&&selectedZone!=='SITE'&&zv.zoneId!==selectedZone)continue;
    const isSel=zv.zoneId===selectedZone;
-   const slabH=Math.max(0.22,Number(((zv.ffl||0.15)-(zv.ssl||0)).toFixed(2)));
+   const slabH=Math.max(0.02,Number(((zv.ffl??0.15)-(zv.ssl??0)).toFixed(2)));
    zones.push({
     kind:'zone',id:zv.zoneId,objectId:zv.id,label:zv.zoneId+' · '+zv.name,name:zv.name,zoneId:zv.zoneId,
     level:zv.level,egl:zv.egl??-0.80,ssl:zv.ssl+off.dz,ffl:zv.ffl+off.dz,
@@ -760,6 +761,16 @@
    STATE.projected.push({item,verts,depth:avgDepth,faces:FACES.map(f=>f.idx.map(i=>verts[i]))});
   }
 
+  // Room fit-out groups share the existing depth sort, explode transform and picking pipeline.
+  for(const group of BUILDING?.build(D,STATE,selectedZone)||[]){
+   const item={kind:'building',id:group.id,zoneId:group.zoneId,selected:STATE.selectedBuilding===group.id};
+   for(const part of group.parts){
+    const verts=boxVertices(part).map(v=>projectPoint(...v,W,H));
+    for(const f of FACES){const poly=f.idx.map(i=>verts[i]);renderFaces.push({item,poly,depth:poly.reduce((n,p)=>n+p.depth,0)/poly.length,fill:shadeHex(part.color,f.shade),stroke:item.selected?'#ffcf56':part.color,alpha:part.alpha*(selectedZone===group.zoneId||!selectedZone||selectedZone==='SITE'?1:.5)});}
+    STATE.projected.push({item,faces:FACES.map(f=>f.idx.map(i=>verts[i])),depth:verts.reduce((n,p)=>n+p.depth,0)/verts.length});
+   }
+  }
+
   const detail=DETAIL&&STATE.showServiceDetail?DETAIL.build(D,STATE,selectedZone):{meshes:[],labels:[]};
   for(const m of detail.meshes){
    const verts=m.vertices.map(v=>projectPoint(...v,W,H));
@@ -1016,7 +1027,7 @@
    }
   }
   hits.sort((a,b)=>{
-   const rank={asset:0,service:1,zone:2};if(a.item.kind!==b.item.kind)return rank[a.item.kind]-rank[b.item.kind];
+   const rank={asset:0,service:1,building:2,zone:3};if(a.item.kind!==b.item.kind)return rank[a.item.kind]-rank[b.item.kind];
    return a.depth-b.depth;
   });
   return hits[0]?.item||null;
@@ -1109,11 +1120,12 @@
  });
 
  function command(cmd,D,st){
-  if(cmd==='toggleIsolateService'){if(!STATE.isolateService&&STATE.selectedService){command('selectService:'+STATE.selectedService,D,st);return;}STATE.isolateService=false;STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;}
+  if(cmd.startsWith('selectBuilding:')){STATE.selectedBuilding=cmd.slice(15);STATE.selectedService=null;STATE.isolateService=false;}
+  else if(cmd==='toggleIsolateService'){if(!STATE.isolateService&&STATE.selectedService){command('selectService:'+STATE.selectedService,D,st);return;}STATE.isolateService=false;STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;}
   else if(cmd==='toggleServiceDetail'){STATE.showServiceDetail=!STATE.showServiceDetail;}
   else if(cmd.startsWith('selectService:')){const id=cmd.slice(14),s=D.scene?.serviceDetail?.services.find(s=>s.id===id);if(s&&DETAIL){STATE.selectedService=id;STATE.isolateService=true;STATE.showServiceDetail=true;STATE.showRoutes=true;STATE.showDuctBanks=true;STATE.showSite=true;if(['busway','pipe','conduit','tray'].includes(s.kind))STATE.explodeMode=false;STATE.levelFilter='ALL';const b=DETAIL.build({...D,scene:{...D.scene,serviceDetail:{services:[s]}}},STATE,s.zone).meshes.flatMap(m=>m.vertices);if(b.length){STATE.targetX=(Math.min(...b.map(p=>p[0]))+Math.max(...b.map(p=>p[0])))/2;STATE.targetY=(Math.min(...b.map(p=>p[1]))+Math.max(...b.map(p=>p[1])))/2;STATE.targetZ=(Math.min(...b.map(p=>p[2]))+Math.max(...b.map(p=>p[2])))/2;STATE.distance=Math.max(5,Math.min(98,Math.max(...[0,1,2].map(i=>Math.max(...b.map(p=>p[i]))-Math.min(...b.map(p=>p[i]))))*1.05+3));const rect=STATE.canvas?.getBoundingClientRect()||{width:760,height:480};for(let attempt=0;attempt<14;attempt++){const points=b.map(p=>projectPoint(...p,rect.width,rect.height));if(points.every(p=>p.x>=rect.width*.1&&p.x<=rect.width*.9&&p.y>=rect.height*.1&&p.y<=rect.height*.9))break;STATE.distance=Math.min(98,STATE.distance*1.12);}}}}
   else if(cmd==='clearService'){if(STATE.isolateService){STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;}STATE.selectedService=null;STATE.isolateService=false;}
-  else if(cmd==='reset'){STATE.viewMode='iso';STATE.yaw=-0.58;STATE.pitch=0.52;STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18.0;STATE.targetZ=1.8;STATE.isolateZone=false;STATE.explodeMode=false;STATE.levelFilter='ALL';STATE.showSite=true;STATE.showDuctBanks=true;STATE.showLabels=true;STATE.showClearance=true;STATE.showRoutes=true;STATE.showElevations=true;STATE.showServiceDetail=true;STATE.selectedService=null;STATE.isolateService=false;}
+  else if(cmd==='reset'){STATE.selectedBuilding=null;STATE.viewMode='iso';STATE.yaw=-0.58;STATE.pitch=0.52;STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18.0;STATE.targetZ=1.8;STATE.isolateZone=false;STATE.explodeMode=false;STATE.levelFilter='ALL';STATE.showSite=true;STATE.showDuctBanks=true;STATE.showLabels=true;STATE.showClearance=true;STATE.showRoutes=true;STATE.showElevations=true;STATE.showServiceDetail=true;STATE.selectedService=null;STATE.isolateService=false;}
   else if(cmd==='viewIso'){STATE.viewMode='iso';STATE.yaw=-0.58;STATE.pitch=0.52;STATE.distance=52;}
   else if(cmd==='viewTop'){STATE.viewMode='top';STATE.yaw=0;STATE.pitch=Math.PI/2;STATE.distance=58;STATE.targetX=18.5;STATE.targetY=18.0;}
   else if(cmd==='viewSouth'){STATE.viewMode='south';STATE.yaw=0;STATE.pitch=0;STATE.distance=48;STATE.targetZ=2.4;}
@@ -1121,7 +1133,7 @@
   else if(cmd.startsWith('level:')){STATE.levelFilter=cmd.split(':')[1];}
   else if(cmd==='fitZone'){
    const zv=(D.scene?.zoneVolumes||[]).find(x=>x.zoneId===st.selectedZone);
-   if(zv&&zv.zoneId!=='SITE'){const off=getZoneExplodeOffset(zv.zoneId,zv.level,zv.x+zv.w/2,zv.y+zv.d/2);STATE.levelFilter='ALL';STATE.targetX=zv.x+zv.w/2+off.dx;STATE.targetY=zv.y+zv.d/2+off.dy;STATE.targetZ=zv.ssl+1.5+off.dz;STATE.distance=25;}else{STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;STATE.distance=62;}
+   if(zv&&zv.zoneId!=='SITE'){const off=getZoneExplodeOffset(zv.zoneId,zv.level,zv.x+zv.w/2,zv.y+zv.d/2);STATE.levelFilter='ALL';STATE.targetX=zv.x+zv.w/2+off.dx;STATE.targetY=zv.y+zv.d/2+off.dy;STATE.targetZ=zv.ssl+1.5+off.dz;STATE.distance=Math.max(12,Math.max(zv.w,zv.d,zv.h)*1.15+4);}else{STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;STATE.distance=62;}
   }else if(cmd==='fitAsset'){
    const a=D.assets.find(x=>x.id===st.selectedAsset);
    if(a?.spatial){const zv=D.scene.zoneVolumes.find(z=>z.zoneId===a.zone),off=getZoneExplodeOffset(a.zone,zv.level,zv.x+zv.w/2,zv.y+zv.d/2);STATE.levelFilter='ALL';STATE.targetX=a.spatial.x+a.spatial.w/2+off.dx;STATE.targetY=a.spatial.y+a.spatial.d/2+off.dy;STATE.targetZ=a.spatial.ffl+1+off.dz;STATE.distance=17;}

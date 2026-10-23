@@ -5,12 +5,12 @@ import hashlib,json,re,zipfile
 root=Path(__file__).resolve().parents[1]
 names=['README.md','package.json','.gitignore','.gitattributes','netlify.toml','START-DC01.cmd',
        'index.html','landing.html','datacenter.html','public-notes.html','feedback-template.md',
-       'dc.css','dc-engine.js','dc-detail.js','dc-viewer.js','dc-ui.js','dc-zoning.js','dc-maintenance.js','dc-architecture.js',
+       'dc.css','dc-engine.js','dc-detail.js','dc-building.js','dc-viewer.js','dc-ui.js','dc-zoning.js','dc-maintenance.js','dc-architecture.js',
        'lab.css','lab-engine.js','lab-ui.js','showcase.css','showcase.js']
 paths=[root/n for n in names]
 for folder in ['data','assets','samples','tools','tests','.github']:
     paths.extend(p for p in (root/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)
-docs=['DEPLOYMENT.md','PUBLIC_BETA_REVIEW.md','ARCHITECTURE_LAB.md','ARCHITECTURE_PREVIEW.png','MAINTENANCE_SCENARIOS.md',
+docs=['ROOM_FITOUT.md','DEPLOYMENT.md','PUBLIC_BETA_REVIEW.md','ARCHITECTURE_LAB.md','ARCHITECTURE_PREVIEW.png','MAINTENANCE_SCENARIOS.md',
       'ZONING_PLAYGROUND.md','SERVICE_MODEL_DETAIL.md','DATACENTER_CASE.md','CONTROL_LAB.md',
       'ROLE_RESPONSIBILITY.md','EXCHANGE_VALIDATION.json']
 paths.extend(root/'docs'/n for n in docs)

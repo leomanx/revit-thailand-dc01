@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..');
-const runtime=['datacenter.html','dc.css','dc-engine.js','dc-viewer.js','dc-detail.js','dc-ui.js','dc-zoning.js','dc-maintenance.js','dc-architecture.js','public-notes.html','feedback-template.md','lab.css','lab-engine.js','lab-ui.js','showcase.css','showcase.js','assets/dc01-campus.png','assets/social-card.png','assets/rt-mark.svg','data/datacenter.js','data/datacenter.json','data/dc-downloads.js','data/template.js','data/cde-template.json'];
+const runtime=['datacenter.html','dc.css','dc-engine.js','dc-viewer.js','dc-detail.js','dc-building.js','dc-ui.js','dc-zoning.js','dc-maintenance.js','dc-architecture.js','public-notes.html','feedback-template.md','lab.css','lab-engine.js','lab-ui.js','showcase.css','showcase.js','assets/dc01-campus.png','assets/social-card.png','assets/rt-mark.svg','data/datacenter.js','data/datacenter.json','data/dc-downloads.js','data/template.js','data/cde-template.json'];
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 function siteUrl(value=''){
  if(!value)return '';
