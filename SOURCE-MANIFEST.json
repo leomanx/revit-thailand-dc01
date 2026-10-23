@@ -79,8 +79,8 @@
     },
     {
       "path": "datacenter.html",
-      "bytes": 5442,
-      "sha256": "f612165b6b933ac049a8e349e4c4ad86fbe6f4b0bae662b85889e2de98291cc4"
+      "bytes": 5455,
+      "sha256": "e8efbe18eaaa2872835f818f051324cc94cb0425ceffd72e06132b25cdcd1b89"
     },
     {
       "path": "dc-architecture.js",
@@ -204,8 +204,8 @@
     },
     {
       "path": "landing.html",
-      "bytes": 13214,
-      "sha256": "ff2f65db6ef25ad0d8e9e3131363c1d03b23410c4a71e79cd589b46212ed8c10"
+      "bytes": 13263,
+      "sha256": "6d104e88d1000d727bfb460f91fe44ce193bce137905bbda364c4438e92ecbd3"
     },
     {
       "path": "netlify.toml",
