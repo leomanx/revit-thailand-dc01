@@ -80,7 +80,7 @@
     {
       "path": "datacenter.html",
       "bytes": 5545,
-      "sha256": "3222c4a9ea4bf2d868a15733f4fa52e81c34947d32f0d7617e00c09dabe6f1a1"
+      "sha256": "78d97e350985336acc67eb9945737d5face1970b2be133836f02b73f13058fcf"
     },
     {
       "path": "dc-architecture.js",
@@ -114,8 +114,8 @@
     },
     {
       "path": "dc-viewer.js",
-      "bytes": 55723,
-      "sha256": "8cf012f9b0d261506fe168991d4b78024eb326b9952881ac5bf7166f50462b09"
+      "bytes": 55761,
+      "sha256": "48eb09ea5634a2b7670b7f14505aaccf73e03155c04f6340c4b0b539fb625bef"
     },
     {
       "path": "dc-zoning.js",

@@ -1133,7 +1133,7 @@
   else if(cmd==='viewEast'){STATE.viewMode='east';STATE.yaw=-Math.PI/2;STATE.pitch=0;STATE.distance=48;STATE.targetZ=2.4;}
   else if(cmd.startsWith('level:')){STATE.levelFilter=cmd.split(':')[1];}
   else if(cmd==='roomInterior'){
-   const z=D.scene?.zoneVolumes.find(z=>z.zoneId===st.selectedZone);if(z&&BUILDING?.profiles[z.zoneId]){command('reset',D,st);command('fitZone',D,st);STATE.roomInterior=true;STATE.isolateZone=true;STATE.levelFilter=z.level;STATE.showSite=false;STATE.showRoutes=false;STATE.showDuctBanks=false;STATE.showElevations=false;STATE.showServiceDetail=false;STATE.showLabels=false;STATE.showClearance=false;STATE.targetZ=z.ffl+1.3;}
+   const z=D.scene?.zoneVolumes.find(z=>z.zoneId===st.selectedZone);if(z&&BUILDING?.profiles[z.zoneId]){command('reset',D,st);command('fitZone',D,st);STATE.roomInterior=true;STATE.isolateZone=true;STATE.levelFilter=z.level;STATE.showSite=false;STATE.showRoutes=false;STATE.showDuctBanks=false;STATE.showElevations=false;STATE.showServiceDetail=false;STATE.showLabels=false;STATE.showClearance=false;STATE.targetZ=z.ffl+1.3;STATE.yaw=Math.PI-.35;STATE.pitch=.72;}
   }
   else if(cmd==='fitZone'){
    const zv=(D.scene?.zoneVolumes||[]).find(x=>x.zoneId===st.selectedZone);
