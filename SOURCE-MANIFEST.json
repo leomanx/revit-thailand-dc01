@@ -80,7 +80,7 @@
     {
       "path": "datacenter.html",
       "bytes": 5545,
-      "sha256": "99de2b1a83f0c49989f0265ad49180986e86ab94971370c65460f541e84b85ea"
+      "sha256": "3222c4a9ea4bf2d868a15733f4fa52e81c34947d32f0d7617e00c09dabe6f1a1"
     },
     {
       "path": "dc-architecture.js",
@@ -89,8 +89,8 @@
     },
     {
       "path": "dc-building.js",
-      "bytes": 29953,
-      "sha256": "472f796533d74f0a0655032257c391312a37de1dc04e120a14109ba0ff9594e2"
+      "bytes": 30822,
+      "sha256": "ec8e192aebe107939d8743cad75c208c97a28aa8ee886383c15241705b1337e1"
     },
     {
       "path": "dc-detail.js",
@@ -109,13 +109,13 @@
     },
     {
       "path": "dc-ui.js",
-      "bytes": 129746,
-      "sha256": "24af1e3e06fdb3f2a78783c8c6d2ba4c96b396c0c1f45168d49f884abe965592"
+      "bytes": 129828,
+      "sha256": "f0bfda7866669791cba8d107934440936bdeef3f6438be3702bce02b8c1ebdf3"
     },
     {
       "path": "dc-viewer.js",
-      "bytes": 55134,
-      "sha256": "2c34e95c6e7a30cc44eee0b30d2e7e3bc0bd6dbdf4fa462fb1221b9f1c5192f7"
+      "bytes": 55723,
+      "sha256": "8cf012f9b0d261506fe168991d4b78024eb326b9952881ac5bf7166f50462b09"
     },
     {
       "path": "dc-zoning.js",
@@ -299,8 +299,8 @@
     },
     {
       "path": "tests/building-fitout.test.cjs",
-      "bytes": 4407,
-      "sha256": "d62ad9674755a91010bd4bed07538fc68445533c7f31ed03fbe40e695d3a289c"
+      "bytes": 5042,
+      "sha256": "78ed8f8d07f48f51d36325ee84f9cfc55fb1dcb4f0e97545d0c0b55cbf17c5a0"
     },
     {
       "path": "tests/datacenter.test.cjs",

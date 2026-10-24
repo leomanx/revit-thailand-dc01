@@ -12,7 +12,7 @@
  const BUILDING=root.DCBuilding||(typeof require==='function'?require('./dc-building.js'):null);
  const STATE={
   yaw:-0.58,pitch:0.52,distance:52,targetX:18.5,targetY:18.0,targetZ:1.8,
-  selectedBuilding:null,selectedService:null,showServiceDetail:true,isolateService:false,
+  roomInterior:false,selectedBuilding:null,selectedService:null,showServiceDetail:true,isolateService:false,
   viewMode:'iso', // 'iso' | 'top' | 'south' | 'east'
   levelFilter:'ALL', // 'ALL' | '00' | '01' | 'RF'
   showSite:true,showDuctBanks:true,showClearance:true,showRoutes:true,showElevations:true,showLabels:true,
@@ -119,7 +119,7 @@
     stroke:isSel?'#ffcf56':'#6e8c7a',selected:isSel,alpha:isSel?0.92:0.58
    });
    // Grounding structural columns for elevated zones
-   if(zv.ssl>0&&(STATE.levelFilter==='ALL'||STATE.levelFilter===zv.level)){
+   if(!STATE.roomInterior&&zv.ssl>0&&(STATE.levelFilter==='ALL'||STATE.levelFilter===zv.level)){
     const colPositions=[
      [zv.x+off.dx+0.3,zv.y+off.dy+0.3],[zv.x+off.dx+zv.w-0.7,zv.y+off.dy+0.3],
      [zv.x+off.dx+zv.w*0.5-0.2,zv.y+off.dy+0.3],[zv.x+off.dx+zv.w*0.5-0.2,zv.y+off.dy+zv.d-0.7],
@@ -136,7 +136,7 @@
   }
 
   // L00 Grounded Base Volumes under NOC (Security Lobby) and under OFF (Loading Dock & Staging Bay)
-  if(STATE.levelFilter==='ALL'||STATE.levelFilter==='00'){
+  if(!STATE.roomInterior&&(STATE.levelFilter==='ALL'||STATE.levelFilter==='00')){
    for(const bv of (D.scene?.siteMasterplan?.baseVolumes||[])){
     if(STATE.isolateZone&&selectedZone&&selectedZone!=='SITE'&&selectedZone!==bv.parentZone)continue;
     const pOff=STATE.explodeMode?getZoneExplodeOffset(bv.parentZone,'00',bv.x+bv.w*0.5,bv.y+bv.d*0.5):{dx:0,dy:0,dz:0};
@@ -828,6 +828,7 @@
 
   // Zone Enclosures: Vertical Walls, Suspended Ceiling Plane (FCL), Structural Soffit & Explode Assembly Lines
   for(const item of zones){
+   if(STATE.roomInterior)continue;
    const roomVerts=boxVertices(item,item.ssl,item.roomH).map(v=>projectPoint(v[0],v[1],v[2],W,H));
    ctx.save();
    // If Exploded Mode is active, draw dashed assembly leader line back to original footprint
@@ -1125,12 +1126,15 @@
   else if(cmd==='toggleServiceDetail'){STATE.showServiceDetail=!STATE.showServiceDetail;}
   else if(cmd.startsWith('selectService:')){const id=cmd.slice(14),s=D.scene?.serviceDetail?.services.find(s=>s.id===id);if(s&&DETAIL){STATE.selectedService=id;STATE.isolateService=true;STATE.showServiceDetail=true;STATE.showRoutes=true;STATE.showDuctBanks=true;STATE.showSite=true;if(['busway','pipe','conduit','tray'].includes(s.kind))STATE.explodeMode=false;STATE.levelFilter='ALL';const b=DETAIL.build({...D,scene:{...D.scene,serviceDetail:{services:[s]}}},STATE,s.zone).meshes.flatMap(m=>m.vertices);if(b.length){STATE.targetX=(Math.min(...b.map(p=>p[0]))+Math.max(...b.map(p=>p[0])))/2;STATE.targetY=(Math.min(...b.map(p=>p[1]))+Math.max(...b.map(p=>p[1])))/2;STATE.targetZ=(Math.min(...b.map(p=>p[2]))+Math.max(...b.map(p=>p[2])))/2;STATE.distance=Math.max(5,Math.min(98,Math.max(...[0,1,2].map(i=>Math.max(...b.map(p=>p[i]))-Math.min(...b.map(p=>p[i]))))*1.05+3));const rect=STATE.canvas?.getBoundingClientRect()||{width:760,height:480};for(let attempt=0;attempt<14;attempt++){const points=b.map(p=>projectPoint(...p,rect.width,rect.height));if(points.every(p=>p.x>=rect.width*.1&&p.x<=rect.width*.9&&p.y>=rect.height*.1&&p.y<=rect.height*.9))break;STATE.distance=Math.min(98,STATE.distance*1.12);}}}}
   else if(cmd==='clearService'){if(STATE.isolateService){STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;}STATE.selectedService=null;STATE.isolateService=false;}
-  else if(cmd==='reset'){STATE.selectedBuilding=null;STATE.viewMode='iso';STATE.yaw=-0.58;STATE.pitch=0.52;STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18.0;STATE.targetZ=1.8;STATE.isolateZone=false;STATE.explodeMode=false;STATE.levelFilter='ALL';STATE.showSite=true;STATE.showDuctBanks=true;STATE.showLabels=true;STATE.showClearance=true;STATE.showRoutes=true;STATE.showElevations=true;STATE.showServiceDetail=true;STATE.selectedService=null;STATE.isolateService=false;}
+  else if(cmd==='reset'){STATE.roomInterior=false;STATE.selectedBuilding=null;STATE.viewMode='iso';STATE.yaw=-0.58;STATE.pitch=0.52;STATE.distance=52;STATE.targetX=18.5;STATE.targetY=18.0;STATE.targetZ=1.8;STATE.isolateZone=false;STATE.explodeMode=false;STATE.levelFilter='ALL';STATE.showSite=true;STATE.showDuctBanks=true;STATE.showLabels=true;STATE.showClearance=true;STATE.showRoutes=true;STATE.showElevations=true;STATE.showServiceDetail=true;STATE.selectedService=null;STATE.isolateService=false;}
   else if(cmd==='viewIso'){STATE.viewMode='iso';STATE.yaw=-0.58;STATE.pitch=0.52;STATE.distance=52;}
   else if(cmd==='viewTop'){STATE.viewMode='top';STATE.yaw=0;STATE.pitch=Math.PI/2;STATE.distance=58;STATE.targetX=18.5;STATE.targetY=18.0;}
   else if(cmd==='viewSouth'){STATE.viewMode='south';STATE.yaw=0;STATE.pitch=0;STATE.distance=48;STATE.targetZ=2.4;}
   else if(cmd==='viewEast'){STATE.viewMode='east';STATE.yaw=-Math.PI/2;STATE.pitch=0;STATE.distance=48;STATE.targetZ=2.4;}
   else if(cmd.startsWith('level:')){STATE.levelFilter=cmd.split(':')[1];}
+  else if(cmd==='roomInterior'){
+   const z=D.scene?.zoneVolumes.find(z=>z.zoneId===st.selectedZone);if(z&&BUILDING?.profiles[z.zoneId]){command('reset',D,st);command('fitZone',D,st);STATE.roomInterior=true;STATE.isolateZone=true;STATE.levelFilter=z.level;STATE.showSite=false;STATE.showRoutes=false;STATE.showDuctBanks=false;STATE.showElevations=false;STATE.showServiceDetail=false;STATE.showLabels=false;STATE.showClearance=false;STATE.targetZ=z.ffl+1.3;}
+  }
   else if(cmd==='fitZone'){
    const zv=(D.scene?.zoneVolumes||[]).find(x=>x.zoneId===st.selectedZone);
    if(zv&&zv.zoneId!=='SITE'){const off=getZoneExplodeOffset(zv.zoneId,zv.level,zv.x+zv.w/2,zv.y+zv.d/2);STATE.levelFilter='ALL';STATE.targetX=zv.x+zv.w/2+off.dx;STATE.targetY=zv.y+zv.d/2+off.dy;STATE.targetZ=zv.ssl+1.5+off.dz;STATE.distance=Math.max(12,Math.max(zv.w,zv.d,zv.h)*1.15+4);}else{STATE.targetX=18.5;STATE.targetY=18;STATE.targetZ=1.8;STATE.distance=62;}

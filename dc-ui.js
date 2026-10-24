@@ -496,7 +496,8 @@
   e.preventDefault();const {do:action,id,target,value,option,req,cmd,state:stVal,zone:znVal}=b.dataset;
   if(action==='view')setView(target);
   else if(action==='stage'){selectedStage=id;if($('file-dialog').open)$('file-dialog').close();setView('lifecycle');}
-  else if(action==='exportBuildingBrief'){const B=window.DCBuilding,p=B?.profiles[id];if(p)download('DC01-'+id+'-preliminary-material-brief.json',JSON.stringify({schema:'DC01-room-brief-v1',zone:id,status:'ILLUSTRATIVE / NOT APPROVED / NOT A CDE REGISTER FILE',profile:p,specifications:Object.fromEntries(p.specs.map(k=>[k,B.specs[k]])),components:B.build(D,{isolateZone:true},id).map(g=>({id:g.id,label:g.label,specs:g.specs})),notice:'Fictional project assumptions; TBC requires a real design brief, applicable code and evidence. No live approval, FM identity or IFC geometry supplied.'},null,2));}
+  else if(action==='exportBuildingBrief'){const brief=window.DCBuilding?.exportBrief(D,id);if(brief)download('DC01-'+id+'-preliminary-material-brief.json',JSON.stringify(brief,null,2));}
+  else if(action==='roomInterior'){selectedZone=id;selectedAsset=null;selectedService=null;V?.command('roomInterior',D,{selectedZone,selectedAsset});render();}
   else if(action==='buildingPart'){const g=window.DCBuilding?.build(D,{levelFilter:'ALL'},'SITE').find(g=>g.id===id);if(g){selectedZone=g.zoneId;selectedAsset=null;selectedService=null;V?.command('selectBuilding:'+id,D,{selectedZone,selectedAsset});render();}}
   else if(action==='zone'){selectedService=null;V?.command('clearService',D,{selectedZone,selectedAsset});selectedZone=id;const first=D.assets.find(a=>a.zone===id);if(D.assets.find(a=>a.id===selectedAsset)?.zone!==id)selectedAsset=first?.id||null;render();}
   else if(action==='selectService'){const service=D.scene.serviceDetail?.services.find(s=>s.id===id);if(service){selectedService=id;selectedAsset=null;selectedZone=service.zone;V?.command('selectService:'+id,D,{selectedZone,selectedAsset});setView('atlas');}}
@@ -568,9 +569,11 @@
   const a=D.assets.find(a=>a.id===asset);if(a&&['assets','atlas'].includes(view)){selectedAsset=a.id;selectedZone=a.zone;selectedService=null;}
   const assembly=D.scene.serviceDetail?.services.find(s=>s.id===service);
   if(view==='atlas'&&assembly){selectedService=assembly.id;selectedAsset=null;selectedZone=assembly.zone;return 'service';}
-  return a&&view==='atlas'?'asset':null;
+  if(a&&view==='atlas')return 'asset';
+  const zone=params.get('zone');if(view==='atlas'&&D.zones.some(z=>z.id===zone)){selectedZone=zone;selectedAsset=null;selectedService=null;return params.get('room')==='1'?'room':'zone';}
+  return null;
  }
- function openEntry(){const focus=entryView();if($('file-dialog').open)$('file-dialog').close();render();if(focus==='service'){V?.command('selectService:'+selectedService,D,{selectedZone,selectedAsset});render();}else if(focus==='asset')V?.command('fitAsset',D,{selectedZone,selectedAsset});}
+ function openEntry(){const focus=entryView();if($('file-dialog').open)$('file-dialog').close();render();if(focus==='service'){V?.command('selectService:'+selectedService,D,{selectedZone,selectedAsset});render();}else if(focus==='asset')V?.command('fitAsset',D,{selectedZone,selectedAsset});else if(focus==='zone'||focus==='room'){V?.command(focus==='room'?'roomInterior':'fitZone',D,{selectedZone,selectedAsset});render();}}
  window.addEventListener('hashchange',openEntry);
  openEntry();
 })();
