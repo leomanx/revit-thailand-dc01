@@ -37,3 +37,11 @@ Build with `SITE_URL=https://revit-thailand-dc01.netlify.app/`, run `npm run bui
 The homepage and model page include absolute Open Graph image URLs to the public 1200 × 630 PNG banner, canonical URLs, image dimensions, type and alt text. Metadata and public image access were verified. Facebook's own cached preview was not inspected because Sharing Debugger requested login in the automation browser.
 
 The room fit-out comprises 39 selectable component groups in 10 zones and 11 preliminary material schedules. NOC room inspection shows three operator consoles, six display panels, glazing, door, cutaway ceiling and service interfaces. Values are fictional project targets; unresolved vertical access/egress and evidence requirements remain visible.
+
+### Subsequent user rename — 27 October 2026
+
+Current Netlify project name: **`rvt-th-cde-exp-01`** (reported by the user). Keep project ID `145cfbdd-13f9-40ab-8e4c-1fec96515967`. The hostnames above describe the original deployment; resolve the existing project's current public URL before the next build/upload and update `SITE_URL`, canonical and Open Graph URLs accordingly. Do not create a duplicate site under the old name.
+
+### Social preview correction after rename
+
+Verified public base: https://rvt-th-cde-exp-01.netlify.app/. Rebuilt with this `SITE_URL` so image, canonical and `og:url` no longer point to the former hostname. The homepage share title now identifies Revit Thailand and the 3D BIM/Data learning tool. The existing 1200 x 630 banner has a versioned image URL (`?v=20261027-2`) for a fresh crawler fetch.

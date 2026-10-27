@@ -79,8 +79,8 @@
     },
     {
       "path": "datacenter.html",
-      "bytes": 6563,
-      "sha256": "1581c6701279676584c4922b402c41353bd66801ce02df011ae10669e0336d9e"
+      "bytes": 6576,
+      "sha256": "2029de3876700bba3a5b2f1fba1e00ddebf0551fcbb5b70f5fbc8d343986ce64"
     },
     {
       "path": "dc-architecture.js",
@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 5193,
-      "sha256": "bbf411877cfef121924cef3840401f1bb1752189b8d3ce26b2f23fb3d0da8104"
+      "bytes": 6035,
+      "sha256": "1f1929487421862851e7445370f8bde0b6c8c75c5e456a44da734469e3b8b962"
     },
     {
       "path": "docs/EXCHANGE_VALIDATION.json",
@@ -214,8 +214,8 @@
     },
     {
       "path": "landing.html",
-      "bytes": 13518,
-      "sha256": "244e6b425696bb06277f799eab35b0ba90fba5e3e46f62d9a7f9d9170f98747f"
+      "bytes": 13610,
+      "sha256": "b9a34e239660d7ff6585d40b8f4c00f1b5237f6cc59d8213907e096ede82dfe2"
     },
     {
       "path": "netlify.toml",
@@ -354,8 +354,8 @@
     },
     {
       "path": "tests/static-release.test.cjs",
-      "bytes": 6446,
-      "sha256": "7ea8c79981f55b6d27a34a2126bb4823b29a65a1481a321a594e41d2e559659e"
+      "bytes": 6469,
+      "sha256": "1621844c4a0491888d05c8da72afbaac74abb1220c7535d86c632abb796bad87"
     },
     {
       "path": "tests/zoning-play.test.cjs",
@@ -384,8 +384,8 @@
     },
     {
       "path": "tools/build-static.cjs",
-      "bytes": 6947,
-      "sha256": "ece36ab4abb06adc0c8c34039a830019fc4ce7d6302d9fd6c08eb08ba9b3a721"
+      "bytes": 6999,
+      "sha256": "984dfc59c7670a1a6c234cf65ef79eb1f65f7e4caf8b22cf20bc515ad1da3d9b"
     },
     {
       "path": "tools/package-dc.py",
