@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 3818,
-      "sha256": "c2749f75e8eef6a93bbb1fefd40725fcd1d7b487554612472f69dd1d7b277d05"
+      "bytes": 5193,
+      "sha256": "bbf411877cfef121924cef3840401f1bb1752189b8d3ce26b2f23fb3d0da8104"
     },
     {
       "path": "docs/EXCHANGE_VALIDATION.json",
@@ -165,7 +165,7 @@
     {
       "path": "docs/PUBLIC_BETA_REVIEW.md",
       "bytes": 11465,
-      "sha256": "33fc6d3b73a43bec0249f6aaaaa4b623c877f5961364fac05c882cc17dcc02c5"
+      "sha256": "990dd9e102c49379d7b09a49fbc239ef79b0f2d7e6c73b8470446067b001eb96"
     },
     {
       "path": "docs/ROLE_RESPONSIBILITY.md",
