@@ -48,7 +48,7 @@ function build({dest=path.join(ROOT,'dist'),publicUrl=process.env.SITE_URL||''}=
   if(base){const image=new URL('assets/social-card.png',base).href;landing=landing.replace('content="assets/social-card.png"','content="'+image+'"').replace('<!-- PUBLIC_URL_METADATA -->','<link rel="canonical" href="'+base+'"><meta property="og:url" content="'+base+'">');}
   fs.writeFileSync(path.join(stage,'index.html'),landing);
   fs.writeFileSync(path.join(stage,'landing.html'),landing);
-  for(const html of filesIn(stage).filter(f=>f.endsWith('.html'))){let content=fs.readFileSync(html,'utf8').replace(/href="index\.html"/g,'href="basics.html"');if(path.basename(html)==='index.html'||path.basename(html)==='landing.html')content=content.replaceAll('href="landing.html"','href="index.html"');fs.writeFileSync(html,content);}
+  for(const html of filesIn(stage).filter(f=>f.endsWith('.html'))){let content=fs.readFileSync(html,'utf8').replace(/href="index\.html"/g,'href="basics.html"');if(path.basename(html)==='index.html'||path.basename(html)==='landing.html')content=content.replaceAll('href="landing.html"','href="index.html"');if(base&&content.includes('<!-- PUBLIC_URL_METADATA -->')){const url=new URL(path.basename(html),base).href;content=content.replace('content="assets/social-card.png"','content="'+new URL('assets/social-card.png',base).href+'"').replace('<!-- PUBLIC_URL_METADATA -->','<link rel="canonical" href="'+url+'"><meta property="og:url" content="'+url+'">');}fs.writeFileSync(html,content);}
   fs.writeFileSync(path.join(stage,'.nojekyll'),'');
   const links=validate(stage);
   const entries=filesIn(stage).map(f=>({path:path.relative(stage,f).replaceAll(path.sep,'/'),bytes:fs.statSync(f).size,sha256:hash(fs.readFileSync(f))}));
